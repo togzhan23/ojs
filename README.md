@@ -1,5 +1,6 @@
 # OJS Project Setup by Togzhan Oral  (Open Journal Systems)
 
+
 ## What is included
 
 This project contains:
@@ -124,6 +125,48 @@ http://localhost/ojs-3.5.0-3
 
 ---
 
+## Repository Content Notice
+
+This GitHub repository contains **only the source code** of the OJS project (PHP files and system structure).
+
+### ❗ Not included in this repository:
+
+* Uploaded journal files (articles, PDFs, etc.)
+* Database dump (`.sql`)
+* Configuration file (`config.inc.php`)
+* Cache and temporary files
+
+---
+
+## Data & Privacy
+
+Some project data is **confidential** and is intentionally excluded from this repository, including:
+
+* User data
+* Submitted articles
+* System configuration (database credentials, keys)
+
+---
+
+##  How to get full project
+
+To run the project completely, you must additionally receive:
+
+1. 📁 `files/` directory (uploaded content)
+2. 🧠 `ojs_db.sql` (database)
+3. ⚙️ `config.inc.php` (configuration)
+
+These files are shared **separately via cloud storage (Google Drive / external media)**.
+
+---
+
+## Important
+
+This repository alone is **not sufficient to run the full system**.
+It contains only the application code.
+
+To fully restore the project, follow the setup instructions in this README and use the additional files provided separately.
+ 
 ## Troubleshooting
 
 ### If site does not load:
