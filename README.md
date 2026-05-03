@@ -60,6 +60,11 @@ http://localhost/ojs-3.5.0-3/index.php/journalArchive/user/register
 ```text
 http://localhost/phpMyAdmin5
 ```
+<img width="1417" height="807" alt="image" src="https://github.com/user-attachments/assets/324626e4-4bd1-414d-bea0-7bd37e7a5fc4" />
+<img width="1432" height="804" alt="image" src="https://github.com/user-attachments/assets/063511ce-f0e0-4310-92b7-42f43d0a1d0b" />
+
+
+
 
 2. Выбрать базу:
 
@@ -76,6 +81,7 @@ ojs_db
 ```text
 users
 ```
+<img width="1439" height="808" alt="image" src="https://github.com/user-attachments/assets/c129f274-af82-4668-ab67-9e9b94e5df92" />
 
 Найти ID пользователя (например `id = 5`)
 
