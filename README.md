@@ -1,188 +1,142 @@
-# OJS Project Setup by Togzhan Oral  (Open Journal Systems)
+# 📘 OJS 3.5 — Инструкция по запуску и передаче проекта (Windows)
 
 
-## What is included
 
-This project contains:
+##  Запуск проекта после включения компьютера
 
-* `ojs-3.5.0-3.zip` — main OJS website files
-* `files.zip` — uploaded journal files (articles, etc.)
-* `ojs_db.sql` — database dump
+### Шаги:
+
+1. Открыть **MAMP**
+
+2. Нажать:
+
+   * **Start Servers**
+
+3. Открыть браузер и перейти:
+
+```text
+http://localhost/ojs-3.5.0-3
+```
+
 
 ---
 
-## Requirements
+##  Доступ к сайту
 
-Before starting, install:
+### Главная страница журнала:
 
-* MAMP (for Windows or Mac)
-  https://www.mamp.info/en/downloads/
-
----
-
-## Step-by-step Setup
-
-### 1. Install and run MAMP
-
-* Open MAMP
-* Click **Start Servers**
-
----
-
-### 2. Extract project files
-
-Extract archives to:
-
-```
-C:\MAMP\htdocs\
-```
-
-You should get:
-
-```
-C:\MAMP\htdocs\ojs-3.5.0-3
-```
-
----
-
-### 3. Move "files" folder
-
-Extract `files.zip` and place it here:
-
-```
-C:\MAMP\files
-```
-
-If folder does not exist — create it manually.
-
----
-
-### 4. Create database
-
-Open in browser:
-
-```
-http://localhost/phpMyAdmin
-```
-
-Steps:
-
-1. Click **New**
-2. Create database:
-
-```
-ojs_db
-```
-
----
-
-### 5. Import database
-
-1. Open `ojs_db`
-2. Go to **Import**
-3. Upload file:
-
-```
-ojs_db.sql
-```
-
-4. Click **Go**
-
----
-
-### 6. Configure OJS
-
-Open file:
-
-```
-C:\MAMP\htdocs\ojs-3.5.0-3\config.inc.php
-```
-
-Set:
-
-```
-base_url = "http://localhost/ojs-3.5.0-3"
-```
-
-And database settings:
-
-```
-host = localhost
-username = root
-password = root
-name = ojs_db
-```
-
----
-
-### 7. Open website
-
-Go to:
-
-```
+```text
 http://localhost/ojs-3.5.0-3
 ```
 
 ---
 
-## Repository Content Notice
+### Панель редактора:
 
-This GitHub repository contains **only the source code** of the OJS project (PHP files and system structure).
-
-### ❗ Not included in this repository:
-
-* Uploaded journal files (articles, PDFs, etc.)
-* Database dump (`.sql`)
-* Configuration file (`config.inc.php`)
-* Cache and temporary files
+```text
+http://localhost/ojs-3.5.0-3/index.php/journalArchive/ru/dashboard/editorial
+```
 
 ---
 
-## Data & Privacy
+## Назначение нового администратора
 
-Some project data is **confidential** and is intentionally excluded from this repository, including:
+### Шаг 1 — регистрация пользователя
 
-* User data
-* Submitted articles
-* System configuration (database credentials, keys)
+1. Перейти:
 
----
+```text
+http://localhost/ojs-3.5.0-3/index.php/journalArchive/user/register
+```
 
-##  How to get full project
-
-To run the project completely, you must additionally receive:
-
-1. 📁 `files/` directory (uploaded content)
-2. 🧠 `ojs_db.sql` (database)
-3. ⚙️ `config.inc.php` (configuration)
-
-These files are shared **separately via cloud storage (Google Drive / external media)**.
+2. Зарегистрировать нового пользователя (новая почта)
 
 ---
 
-## Important
+### Шаг 2 — сделать его админом через базу данных
 
-This repository alone is **not sufficient to run the full system**.
-It contains only the application code.
+1. Открыть:
 
-To fully restore the project, follow the setup instructions in this README and use the additional files provided separately.
- 
-## Troubleshooting
+```text
+http://localhost/phpMyAdmin5
+```
 
-### If site does not load:
+2. Выбрать базу:
 
-* Make sure MAMP is running
-* Check port (use http://localhost:8888 if needed)
-* Check config.inc.php settings
+```text
+ojs_db
+```
 
-### If styles are broken:
+---
 
-* Clear browser cache
-* Check correct base_url
+### Найти пользователя:
 
-### If database error:
+Открыть таблицу:
 
-* Re-import ojs_db.sql
-* Check database credentials
+```text
+users
+```
 
+Найти ID пользователя (например `id = 5`)
 
+---
+
+### Назначить роль администратора:
+
+Открыть таблицу:
+
+```text
+user_user_groups
+```
+
+Добавить новую строку:
+
+```text
+user_id = 5
+user_group_id = 1
+```
+
+---
+
+📌 Где:
+
+* `1` = Administrator
+
+---
+
+## Альтернатива (через SQL)
+
+Можно выполнить SQL:
+
+```sql
+INSERT INTO user_user_groups (user_id, user_group_id)
+VALUES (5, 1);
+```
+
+---
+
+## Важно
+
+* После изменений перезагрузить страницу
+* Новый пользователь получит доступ администратора
+* Старого администратора можно оставить или удалить
+
+---
+
+## Полезно знать
+
+* Папка `files` содержит все статьи
+* Без неё сайт не будет работать корректно
+* База данных = вся информация о пользователях и журнале
+
+---
+
+## Готово
+
+Теперь:
+
+* сайт запускается после включения ПК
+* новый администратор назначен
+* система полностью рабочая
+
+---
